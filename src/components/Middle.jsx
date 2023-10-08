@@ -1,32 +1,8 @@
 import React, { useState } from 'react'
-import { FaHeart, FaComment } from 'react-icons/fa';
-import CommentView from '../utils/CommentView';
+import Post from './Post'
 
 const Middle = ({posts}) => {
     const [currentMode, setCurrentMode] = useState('normal');
-    const [likeCounts, setLikeCounts] = useState({});
-    const [commentCounts, setCommentCounts] = useState({});
-    const [selectedPostId, setSelectedPostId] = useState(null);
-
-    const handleLike = (postId) => {
-        setLikeCounts((prevCounts) => ({
-          ...prevCounts,
-          [postId]: (prevCounts[postId] || 0) + 1,
-        }));
-    };
-    
-    const handleComment = (postId) => {
-        setCommentCounts((prevCounts) => ({
-          ...prevCounts,
-          [postId]: (prevCounts[postId] || 0) + 1,
-        }));
-        setSelectedPostId(postId);
-    }
-    
-    const closeComments = () => {
-        setSelectedPostId(null);
-    };
-
     const anonymousPosts = posts.filter((post) => post.isAnonymous);
     const normalPosts = posts.filter((post) => !post.isAnonymous);
   return (
@@ -56,31 +32,8 @@ const Middle = ({posts}) => {
                     <div>
                         {normalPosts.map((post) => (
                             <div key={post.id} className="bg-white p-4 my-2">
-                                <div className="flex items-center">
-                                    <span className="font-semibold">{post.user.username}</span>
-                                </div>
-                                <p className="mt-2">{post.text}</p>
-                                <div className="flex justify-between mt-4">
-                                    <button
-                                        id={`like-button-${post.id}`}
-                                        className="text-blue-500 transition duration-300 transform hover:scale-110"
-                                        onClick={() => {
-                                            handleLike(post.id);
-                                        }}
-                                    >
-                                        <FaHeart /> {likeCounts[post.id] || 0}
-                                    </button>
-                                    <button
-                                        id={`comment-button-${post.id}`}
-                                        className="text-blue-500 transition duration-300 transform hover:scale-110"
-                                        onClick={() => {
-                                            handleComment(post.id);
-                                        }}
-                                    >
-                                        <FaComment /> {commentCounts[post.id] || 0}
-                                    </button>
-                                </div>
-                                <p className="text-gray-500 mt-2">{post.timestamp}</p>
+                                    <Post post={post} />
+                                {/* <p className="text-gray-500 mt-2">{post.timestamp}</p> */}
                             </div>
                         ))}
                     </div>
@@ -90,39 +43,13 @@ const Middle = ({posts}) => {
                     <div>
                         {anonymousPosts.map((post) => (
                             <div key={post.id} className="bg-white p-4 my-2">
-                                <div className="flex items-center">
-                                    <span className="font-semibold">Anonymous</span>
-                                </div>
-                                <p className="mt-2">{post.text}</p>
-                                <div className="flex justify-between mt-4">
-                                <button
-                                        id={`like-button-${post.id}`}
-                                        className="text-blue-500 transition duration-300 transform hover:scale-110"
-                                        onClick={() => {
-                                            handleLike(post.id);
-                                        }}
-                                    >
-                                        <FaHeart /> {likeCounts[post.id] || 0}
-                                    </button>
-                                    <button
-                                        id={`comment-button-${post.id}`}
-                                        className="text-blue-500 transition duration-300 transform hover:scale-110"
-                                        onClick={() => {
-                                            handleComment(post.id)
-                                        }}
-                                    >
-                                        <FaComment /> {commentCounts[post.id] || 0}
-                                    </button>
-                                </div>
-                                <p className="text-gray-500 mt-2">{post.timestamp}</p>
+                                <Post post={post} />
+                                {/* <p className="text-gray-500 mt-2">{post.timestamp}</p> */}
                             </div>
                         ))}
                     </div>
                 )}
         </main>
-        {selectedPostId !== null && (
-            <CommentView postId={selectedPostId} onClose={closeComments} />
-        )}
     </>
   )
 }

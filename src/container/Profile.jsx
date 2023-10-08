@@ -1,7 +1,6 @@
 import React from 'react'
 import SideNav from '../components/Sidebar'
-import Middle from '../components/Middle'
-import Right from '../components/Right'
+import Pmiddle from '../components/Pmiddle'
 
 const samplePosts = [
   {
@@ -32,32 +31,17 @@ const samplePosts = [
     isAnonymous: true,
     timestamp: '30 minutes ago',
   },
-  {
-    id: 5,
-    username: null,
-    text: 'An anonymous post with no user details.',
-    isAnonymous: true,
-    timestamp: '30 minutes ago',
-  },
-  {
-    id: 5,
-    username: null,
-    text: 'An anonymous post with no user details.',
-    isAnonymous: true,
-    timestamp: '30 minutes ago',
-  },
 ];
 
-const Home = () => {
+const Profile = () => {
   return (
     <div className='w-full h-full flex justify-center items-center relative'>
         <div className='mx-10 w-full h-full flex relative'>
-            <SideNav/>
-            <Middle posts={samplePosts}/>
-            <Right />
+            <SideNav />
+            <Pmiddle posts={samplePosts} />
         </div>
     </div>
   )
 }
 
-export default Home
+export default Profile
