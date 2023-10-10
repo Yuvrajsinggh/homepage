@@ -9,8 +9,8 @@ import Login from './container/Login/Login';
 const App = () => {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/*" element={<Home />} />
+      <Route path="/*" element={<Login />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/followers" element={<Followers />} />
       <Route path="/following" element={<Following />} />
