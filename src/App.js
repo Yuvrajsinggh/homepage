@@ -4,10 +4,12 @@ import Home from './container/Home';
 import Profile from './container/Profile';
 import Followers from './components/Followers';
 import Following from './components/Following';
+import Login from './container/Login/Login';
 
 const App = () => {
   return (
     <Routes>
+      <Route path="/login" element={<Login />} />
       <Route path="/*" element={<Home />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/followers" element={<Followers />} />
