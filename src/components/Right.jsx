@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Search from '../utils/Search'; // Import the Search component.
 
 const App = () => {
+    // eslint-disable-next-line
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 

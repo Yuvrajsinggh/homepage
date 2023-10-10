@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const EditProfileModal = ({ onClose }) => {
+  // eslint-disable-next-line
   const [formData, setFormData] = useState({
     // Initialize formData with user's existing data
   });
