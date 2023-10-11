@@ -36,7 +36,7 @@ const Profile = ({posts}) => {
     : posts.filter((posts) => !posts.isAnonymous);
 
   return (
-    <div className="bg-white p-4 rounded shadow-lg ml-[275px] w-full h-screen">
+    <div className="p-4 rounded shadow-lg ml-[275px] w-full h-screen bg-white/10 border-black border-l-[0.5px]">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold">Your Profile</h1>
         <button
